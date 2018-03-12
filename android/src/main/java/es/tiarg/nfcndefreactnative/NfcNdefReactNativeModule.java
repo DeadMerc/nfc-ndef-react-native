@@ -255,7 +255,10 @@ class NfcNdefReactNativeModule extends ReactContextBaseJavaModule implements Act
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         final PendingIntent pendingIntent = PendingIntent.getActivity(activity.getApplicationContext(), 0, intent, 0);
-        adapter.enableForegroundDispatch(activity, pendingIntent, null, null);
+        if(adapter!=null)
+        {
+            adapter.enableForegroundDispatch(activity, pendingIntent, null, null);
+        }
     }
 
     public static void stopForegroundDispatch(final Activity activity, NfcAdapter adapter) {
